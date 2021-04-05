@@ -41,11 +41,12 @@ public:
     PixelFormatType pixelFormat, uint32_t size, uint8_t* ptrData);
     uint8_t* Pointer(){return frame.data();}
     std::vector<uint8_t>& BufRef(){return frame;}
-    uint32_t Size(){return static_cast<uint32_t>(frame.size());}
+    const std::vector<uint8_t>& BufConstRef() const {return frame;}
+    uint32_t Size() const {return static_cast<uint32_t>(frame.size());}
     uint32_t Width(){return width;}
     uint32_t Height(){return height;}
     uint32_t PixelFormat(){return static_cast<uint32_t>(pixelFormat);}
-    uint64_t FrameId(){return id;}   
+    uint64_t Id()  const override{return id;}   
     uint64_t Timestamp() const {return  timestamp;};
 protected:
 

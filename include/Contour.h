@@ -29,6 +29,7 @@ public:
     ContourType GetContourType() {return  contourType;}
     const std::deque<Point2d<double>>& ContourConstRef()  const  {return contour;}
     std::deque<Point2d<double>>& ContourRef()   {return contour;}
+    uint32_t Size() const {return static_cast<uint32_t>(contour.size());}
 protected:
 
 private:
