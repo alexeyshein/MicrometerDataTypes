@@ -26,7 +26,7 @@ public:
     void Set(uint64_t id,  const std::deque<Point2d<double>>& profileQue,  ContourType type);
     void Set(uint64_t id,  const std::deque<Point2d<double>>&& profileQue,  ContourType type);
     uint64_t Id() const override {return id;}
-    ContourType GetContourType() {return  contourType;}
+    ContourType GetContourType() const {return  contourType;}
     const std::deque<Point2d<double>>& ContourConstRef()  const  {return contour;}
     std::deque<Point2d<double>>& ContourRef()   {return contour;}
     uint32_t Size() const {return static_cast<uint32_t>(contour.size());}
