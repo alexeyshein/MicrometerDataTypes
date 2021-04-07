@@ -17,7 +17,9 @@ ProfileParserCsv::~ProfileParserCsv()
 
 bool ProfileParserCsv::Save(const Profile& profile, const std::string &pathStr)
 {
-   const auto &contoursVec = profile.ProfileConstRef();
+   const auto &contoursVec = profile.ContoursConstRef();
+   const auto &hierarchyVec = profile.HierarchyConstRef();
+
    std::fstream myfile;
    fs::path path(pathStr);
    fs::path parentPath = path.parent_path();
@@ -35,9 +37,12 @@ bool ProfileParserCsv::Save(const Profile& profile, const std::string &pathStr)
    for (int i = 0; i < contoursVec.size(); ++i)
    {
       const auto &contourPoints = contoursVec.at(i).ContourConstRef();
+      auto parentIndex = -1;
+      if(hierarchyVec.size()>i)  //если вектор иерархий заполнен
+         parentIndex = hierarchyVec.at(i);
       for (const auto &point : contourPoints)
       {
-         myfile << i + 1 << delimeter << point.x << delimeter << point.y << std::endl;
+         myfile << i + 1 << delimeter << point.x << delimeter << point.y << delimeter << parentIndex<< std::endl;
       }
    }
    myfile.close();
@@ -48,6 +53,8 @@ bool ProfileParserCsv::Read(Profile& profile, const std::string &path)
 {
 
    std::fstream myfile;
+   Profile tmpProfile{};
+   //auto 
    std::vector<std::deque<Point2d<double>>> tmpProfiles{};
    myfile.open(path, std::fstream::in);
    if (!myfile.is_open())
@@ -57,7 +64,7 @@ bool ProfileParserCsv::Read(Profile& profile, const std::string &path)
 
    std::string line;
    int numPrev {1};
-   std::deque<Point2d<double>> curProf;
+   std::deque<Point2d<double>> curContour;
    while (!myfile.eof())
    {
       std::getline(myfile, line);
@@ -93,13 +100,13 @@ bool ProfileParserCsv::Read(Profile& profile, const std::string &path)
       if (num != numPrev)
       {
          //Start new profile
-         tmpProfiles.push_back(curProf);
-         curProf.clear();
+         tmpProfiles.push_back(curContour);
+         curContour.clear();
       }
       numPrev = num;
-      curProf.push_back({x, y});
+      curContour.push_back({x, y});
    }
-   tmpProfiles.push_back(curProf);
+   tmpProfiles.push_back(curContour);
    //profiles = std::move(tmpProfiles); TMP
    myfile.close();
    return true;
