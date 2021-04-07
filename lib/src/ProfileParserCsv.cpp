@@ -36,7 +36,7 @@ bool ProfileParserCsv::Save(const Profile& profile, const std::string &pathStr)
 
    for (int i = 0; i < contoursVec.size(); ++i)
    {
-      const auto &contourPoints = contoursVec.at(i).ContourConstRef();
+      const auto &contourPoints = contoursVec.at(i).PointsConstRef();
       auto parentIndex = -1;
       if(hierarchyVec.size()>i)  //если вектор иерархий заполнен
          parentIndex = hierarchyVec.at(i);
