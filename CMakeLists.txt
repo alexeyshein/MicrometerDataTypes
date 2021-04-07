@@ -2,6 +2,17 @@
 
 project("MicrometerDataTypes")
 
+
+# Optional  components
+# ===================================================
+option(WITH_MicrometerDataTypes_Tests  "Include Unit Tests" ON)
+
+
+if(WITH_MicrometerDataTypes_Tests)
+	add_definitions(-DBUILD_Test)
+	add_subdirectory (tests)
+endif()
+
 ## TARGET
 ## create target and add include path
 if (NOT TARGET ${PROJECT_NAME})
@@ -9,6 +20,7 @@ if (NOT TARGET ${PROJECT_NAME})
 	add_library(${PROJECT_NAME} STATIC)
     add_library(rf::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 endif()
+
 
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
