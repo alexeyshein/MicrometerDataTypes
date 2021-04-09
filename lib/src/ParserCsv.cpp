@@ -38,11 +38,12 @@ bool ParserCsv::Save(const Profile& profile, const std::string &pathStr)
    {
       const auto &contourPoints = contoursVec.at(i).PointsConstRef();
       auto parentIndex = -1;
+      auto type = static_cast<int>(contoursVec.at(i).GetContourType());
       if(hierarchyVec.size()>i)  //если вектор иерархий заполнен
          parentIndex = hierarchyVec.at(i);
       for (const auto &point : contourPoints)
       {
-         myFile << i + 1 << delimeter << point.x << delimeter << point.y << delimeter << parentIndex<< std::endl;
+         myFile << i << delimeter << point.x << delimeter << point.y<< delimeter<< type << delimeter << parentIndex<< std::endl;
       }
    }
    myFile.close();
@@ -80,6 +81,7 @@ bool ParserCsv::Read(Profile& profile, const std::string &path)
       int num=numPrev;
       double x{0.0};
       double y{0.0};
+      rf::ContourType type{rf::ContourType::Outer};
       int parentIndex{-1};
       try
       {
@@ -106,6 +108,8 @@ bool ParserCsv::Read(Profile& profile, const std::string &path)
       
       try{
          std::getline(ss, token, delimeter[0]);
+         type = static_cast<rf::ContourType>(std::stoi(token));
+         std::getline(ss, token, delimeter[0]);
          parentIndex = std::stoi(token);
       }
       catch (const std::exception&)
@@ -115,12 +119,8 @@ bool ParserCsv::Read(Profile& profile, const std::string &path)
       if (num != numPrev)
       {
          //Start new profile
-         if(numPrev == parentIndexPrev)
-            tmpContour.SetContourType(ContourType::Outer);
-         else
-            tmpContour.SetContourType(ContourType::Inner);
-
          contours.push_back(tmpContour);
+         tmpContour.SetContourType(type);
          hierarchy.push_back(parentIndexPrev);
          points.clear();
       }
@@ -155,7 +155,7 @@ bool ParserCsv::Save(const Contour& contour, const std::string &pathStr)
 
    for (const auto &point : points)
    {
-      myFile << 1 << delimeter << point.x << delimeter << point.y<< delimeter << typeInt << std::endl;
+      myFile << contour.Id() << delimeter << point.x << delimeter << point.y<< delimeter << typeInt << std::endl;
    }
 
    myFile.close();
