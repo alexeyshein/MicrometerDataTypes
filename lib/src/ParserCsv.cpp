@@ -120,16 +120,19 @@ bool ParserCsv::Read(Profile& profile, const std::string &path)
       {
          //Start new profile
          contours.push_back(tmpContour);
-         tmpContour.SetContourType(type);
          hierarchy.push_back(parentIndexPrev);
          points.clear();
       }
-
+      tmpContour.SetContourType(type);
       numPrev = num;
       parentIndexPrev = parentIndex;
       points.push_back({x, y});
    }
    myFile.close();
+   contours.push_back(tmpContour);
+   hierarchy.push_back(parentIndexPrev);
+   if(profile.ContoursConstRef().size() < 1)
+     return false;
    return true;
 }
 
