@@ -6,11 +6,11 @@
 
 namespace rf
 {
-class ParserCsv : public IProfileParser
+class ParserSvg : public IProfileParser
 {
 public:
-    ParserCsv();
-    virtual ~ParserCsv();
+    ParserSvg();
+    virtual ~ParserSvg();
     bool Save(const Profile& profile, const std::string &path) override;
     bool Read(Profile& profile, const std::string &path) override;
     
