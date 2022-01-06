@@ -2,30 +2,30 @@
 #include "Polyline.h"
 
 
-using rf::Polyline;
+using rf::PolyLine;
 
 
-Polyline::Polyline( uint64_t id_):
+PolyLine::PolyLine( uint64_t id_):
   id(id_)
 {};
 
-Polyline::Polyline( uint64_t id_, const std::vector<Point2d<double>>& polyline_):
+PolyLine::PolyLine( uint64_t id_, const std::vector<Point2d<double>>& polyline_):
   id(id_)
 , polyline(polyline_)
 {}
 
-Polyline::Polyline( uint64_t id_,  const std::vector<Point2d<double>>&& polyline_):
+PolyLine::PolyLine( uint64_t id_,  const std::vector<Point2d<double>>&& polyline_):
   id(id_)
 , polyline(polyline_)
 {}
 
-void Polyline::Set(uint64_t id_,  const std::vector<Point2d<double>>& polyline_)
+void PolyLine::Set(uint64_t id_,  const std::vector<Point2d<double>>& polyline_)
 {
   id = id_;
   polyline = polyline_;
 }
 
-void Polyline::Set(uint64_t id_,  const std::vector<Point2d<double>>&& polyline_)
+void PolyLine::Set(uint64_t id_,  const std::vector<Point2d<double>>&& polyline_)
 {
   id = id_;
   polyline.clear();

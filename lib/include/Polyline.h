@@ -12,18 +12,18 @@ namespace rf
 {
 
 
-class Polyline: public IData
+class PolyLine: public IData
 {
 public:
-	Polyline( uint64_t id=0);
-    Polyline( uint64_t id, const std::vector<Point2d<double>>& polyline);
-    Polyline( uint64_t id, const std::vector<Point2d<double>>&& polyline);
-	~Polyline() {};
+    PolyLine( uint64_t id=0);
+    PolyLine( uint64_t id, const std::vector<Point2d<double>>& polyline);
+    PolyLine( uint64_t id, const std::vector<Point2d<double>>&& polyline);
+	~PolyLine() {};
     void Set(uint64_t id,   const std::vector<Point2d<double>>& polyline);
     void Set(uint64_t id,   const std::vector<Point2d<double>>&& polyline);
     uint64_t Id() const override {return id;}   
-    const std::vector<Point2d<double>>& ProfileConstRef()  const  {return polyline;}
-    std::vector<Point2d<double>>& ProfileRef()   {return polyline;}
+    const std::vector<Point2d<double>>& PolyLineConstRef()  const  {return polyline;}
+    std::vector<Point2d<double>>& PolyLineRef()   {return polyline;}
 protected:
 
 private:

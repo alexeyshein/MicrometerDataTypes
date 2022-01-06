@@ -43,9 +43,9 @@ public:
     std::vector<uint8_t>& BufRef(){return frame;}
     const std::vector<uint8_t>& BufConstRef() const {return frame;}
     uint32_t Size() const {return static_cast<uint32_t>(frame.size());}
-    uint32_t Width(){return width;}
-    uint32_t Height(){return height;}
-    uint32_t PixelFormat(){return static_cast<uint32_t>(pixelFormat);}
+    uint32_t Width() const {return width;}
+    uint32_t Height() const {return height;}
+    uint32_t PixelFormat() const {return static_cast<uint32_t>(pixelFormat);}
     uint64_t Id()  const override{return id;}   
     uint64_t Timestamp() const {return  timestamp;};
 protected:
