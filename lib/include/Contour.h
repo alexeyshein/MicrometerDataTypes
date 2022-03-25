@@ -22,6 +22,8 @@ public:
 	Contour( uint64_t id=0);
     Contour( uint64_t id, const std::deque<Point2d<double>>& points,  ContourType type);
     Contour( uint64_t id, const std::deque<Point2d<double>>&& points,  ContourType type);
+    Contour( uint64_t id, const std::vector<Point2d<double>>& pointsVec, ContourType type);
+
 	~Contour() {};
     void Set(uint64_t id,  const std::deque<Point2d<double>>& points,  ContourType type);
     void Set(uint64_t id,  const std::deque<Point2d<double>>&& points,  ContourType type);

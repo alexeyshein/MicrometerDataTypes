@@ -22,6 +22,13 @@ Contour::Contour( uint64_t id_, const std::deque<Point2d<double>>&& points_, Con
 , contourType(type)
 {}
 
+Contour::Contour(uint64_t id_, const std::vector<Point2d<double>>& pointsVec, ContourType type):
+  id(id_)
+, contourType(type)
+{
+    SetPoints(pointsVec);
+}
+
 void Contour::Set(uint64_t id_,  const std::deque<Point2d<double>>& points_, ContourType type)
 {
   id = id_;
