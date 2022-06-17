@@ -24,7 +24,7 @@ void Rect::Set(const Point2d<double> &point1, const Point2d<double> &point2)
 	}
 
 	pointTl.y = point1.y;
-	height = point2.y - point1.y;
+	height = point1.y - point2.y;
 	if (height < 0)
 	{
 		pointTl.y = point2.y;
