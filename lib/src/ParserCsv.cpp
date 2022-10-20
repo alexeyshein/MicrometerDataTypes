@@ -66,8 +66,8 @@ bool ParserCsv::Read(Profile& profile, const std::string &path)
    }
 
    std::string line;
-   int numPrev {1};
-   int parentIndexPrev{1};
+   int numPrev {0};
+   int parentIndexPrev{-1};
    Contour tmpContour;
    auto& points = tmpContour.PointsRef();
 
