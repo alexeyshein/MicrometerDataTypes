@@ -24,10 +24,13 @@ bool ParserCsv::Save(const Profile& profile, const std::string &pathStr)
    fs::path path(pathStr);
    fs::path parentPath = path.parent_path();
    //fs::path file = path.filename();
-
-   if (!fs::exists(parentPath))
+  
+  if(!parentPath.empty()) 
    {
-      fs::create_directories(parentPath);
+      if (!fs::exists(parentPath))
+      {
+         fs::create_directories(parentPath);
+      }
    }
 
    myFile.open(pathStr, std::fstream::out | std::fstream::trunc);
