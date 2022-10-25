@@ -21,6 +21,7 @@ file(GLOB HEADERS
 
 file(GLOB SOURCES 
     ${PROJECT_SOURCE_DIR}/src/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/2dnurbs/*.h
  )
 
 source_group("Header Files" FILES ${HEADERS})
@@ -31,6 +32,14 @@ target_sources(${PROJECT_NAME}
 
 target_include_directories(${PROJECT_NAME} 
     PUBLIC  ${PROJECT_SOURCE_DIR}/include
+    PRIVATE ${PROJECT_SOURCE_DIR}/src/2dnurbs
+    #PRIVATE dxfrw
+ )
+
+ target_link_libraries(
+    ${PROJECT_NAME} 
+    PRIVATE Dxflib::Dxflib
+    #tinynurbs::tinynurbs
  )
 
 
