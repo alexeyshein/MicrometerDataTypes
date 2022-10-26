@@ -1,12 +1,8 @@
 #include "DataUtility.h"
 #include "Contour.h"
-#include <filesystem>
-#include <sstream>
-#include <fstream>
-#include <string>
+#include <algorithm>
 
 using namespace rf;
-namespace fs = std::filesystem;
 
 
 // >0 - counterclockwise angle

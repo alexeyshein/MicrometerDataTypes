@@ -137,7 +137,7 @@ bool ParserDxf::Save(const Profile& profile, const std::string &pathStr)
 
     for(int c=0; c < contoursVec.size(); c++)
     {
-       if(contoursVec.at(c).GetContourType() == rf::ContourType::Outer())
+       if(contoursVec.at(c).GetContourType() == rf::ContourType::Outer)
        {
             int countChildren = std::count_if(hierarchyVec.begin(), hierarchyVec.end(), [&,c](const auto& h){return h == c;});
             // start hatch with two loops:

@@ -10,6 +10,21 @@
 namespace nurbs2d
 {
 
+ /**
+ * Check if two numbers are close enough within eps
+ * @param[in] a First number
+ * @param[in] b Second number
+ * @param[in] eps Tolerance for checking closeness
+ * @return Whether the numbers are close w.r.t. the tolerance
+ */
+    template <typename T> inline bool close(T a, T b, double eps = std::numeric_limits<T>::epsilon())
+    {
+        return (std::abs(a - b) < eps) ? true : false;
+    }
+
+
+
+
 /**
  * Find the span of the given parameter in the knot vector.
  * @param[in] degree Degree of the curve.
@@ -89,12 +104,12 @@ template <typename T> T bsplineOneBasis(int i, unsigned int deg, const std::vect
     // Compute triangular table
     for (int k = 1; k <= static_cast<int>(deg); k++)
     {
-        T saved = (util::close(N[0], 0.0)) ? 0.0 : ((u - U[i]) * N[0]) / (U[i + k] - U[i]);
+        T saved = (close(N[0], 0.0)) ? 0.0 : ((u - U[i]) * N[0]) / (U[i + k] - U[i]);
         for (int j = 0; j < static_cast<int>(deg) - k + 1; j++)
         {
             T Uleft = U[i + j + 1];
             T Uright = U[i + j + k + 1];
-            if (util::close(N[j + 1], 0.0))
+            if (close(N[j + 1], 0.0))
             {
                 N[j] = saved;
                 saved = 0.0;
