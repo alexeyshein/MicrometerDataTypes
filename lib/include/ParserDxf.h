@@ -13,7 +13,8 @@ public:
     virtual ~ParserDxf();
     bool Save(const Profile& profile, const std::string &path) override;
     bool Read(Profile& profile, const std::string &path) override;
-    
+    bool IsFileTypeCorrect(const std::string& path) override;
+
     bool Save(const Contour& contour, const std::string &path);
     bool Read(Contour& contour, const std::string &path);
 private:

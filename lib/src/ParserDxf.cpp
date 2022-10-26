@@ -194,3 +194,10 @@ bool ParserDxf::Read(Contour& contour, const std::string &path)
 {
    return true;
 }
+
+bool ParserDxf::IsFileTypeCorrect(const std::string& pathStr)
+{
+   std::string ext = fs::path(pathStr).extension().string();
+   std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
+   return ext==".dxf";
+}

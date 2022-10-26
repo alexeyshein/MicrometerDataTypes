@@ -227,3 +227,10 @@ bool ParserCsv::Read(Contour& contour, const std::string &path)
    myFile.close();
    return true;
 }
+
+bool ParserCsv::IsFileTypeCorrect(const std::string& pathStr)
+{
+   std::string ext = fs::path(pathStr).extension().string();
+   std::transform(ext.begin(), ext.end(), ext.begin(), ::tolower);
+   return ext==".csv";
+}
