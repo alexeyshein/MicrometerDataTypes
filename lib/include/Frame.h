@@ -47,13 +47,13 @@ public:
     uint32_t Height() const {return height;}
     uint32_t PixelFormat() const {return static_cast<uint32_t>(pixelFormat);}
     uint64_t Id()  const override{return id;}   
-    uint64_t Timestamp() const {return  timestamp;};
+    uint64_t Timestamp() const {return  timestamp;};//timestamp in ns
 protected:
 
 	
 private:
     uint64_t id;
-    uint64_t timestamp;
+    uint64_t timestamp; //timestamp in ns
     uint32_t width;
     uint32_t height;
     PixelFormatType pixelFormat;
