@@ -49,6 +49,16 @@ bool ParserAuto::IsFileTypeCorrect(const std::string& path)
    return false;
 }
 
+std::set<std::string> ParserAuto::GetSupportedTypes()
+{
+    std::set<std::string> result;
+    for (const auto& parser : parsers)
+    {
+        auto v{ parser->GetSupportedTypes() };
+        result.merge(v);
+    }
+    return result;
+}
 
  IProfileParser* ParserAuto::GetParser(const std::string& path)
  {

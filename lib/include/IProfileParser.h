@@ -2,7 +2,8 @@
 
 #include <string>
 #include <vector>
-#include <deque>
+#include <set>
+//#include <deque>
 
 //#include <Profile.h>
 
@@ -17,6 +18,7 @@ public:
     virtual bool Save(const Profile& profile, const std::string& path) = 0;
     virtual bool Read(Profile& profile, const std::string& path) = 0 ;
     virtual bool IsFileTypeCorrect(const std::string& path) = 0;
+    virtual std::set<std::string> GetSupportedTypes() = 0;
 };
 }
 

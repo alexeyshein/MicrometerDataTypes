@@ -16,6 +16,7 @@ public:
     bool Save(const Profile& profile, const std::string &path) override;
     bool Read(Profile& profile, const std::string &path) override;
     bool IsFileTypeCorrect(const std::string& path) override;
+    virtual std::set<std::string> GetSupportedTypes() override;
 
     
 private:
