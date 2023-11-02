@@ -61,7 +61,7 @@ void RotatedRect::Set(const Point2d<double> &center_, double width_, double heig
             maxY = point.y;
         }
     }
-	return Rect();
+	return Rect(rf::Point2d<double>(minX,maxY),std::abs(maxX-minX), std::abs(maxY-minY) );
  }
 
 
