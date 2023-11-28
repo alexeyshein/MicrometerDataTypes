@@ -4,6 +4,13 @@
 
 using namespace::rf;
 
+Profile::Profile():
+ id(0)
+, timestamp(0)
+, contours(0)
+, hierarchy(0)
+{
+}
 
 Profile::Profile( uint64_t id_, uint64_t timestamp_):
   id(id_)
