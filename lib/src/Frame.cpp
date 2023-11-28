@@ -40,6 +40,19 @@ void Frame::Set(uint64_t id_, uint64_t timestamp_,  uint32_t width_,  uint32_t h
    std::copy(ptrData, ptrData+size,  frame.begin()); //100~2500 mks
 }
 
+void Frame::Set(uint64_t id_, uint64_t timestamp_,  uint32_t width_,  uint32_t height_,
+         PixelFormatType pixelFormat_, uint32_t size, uint32_t offsetX_,  uint32_t offsetY_,  uint8_t* ptrData)
+{
+   id=id_;
+   timestamp = timestamp_;
+   width=width_;
+   height=height_;
+   pixelFormat=pixelFormat_;
+   offsetX=offsetX_;
+   offsetY=offsetY_;
+   frame.resize(size);
+   std::copy(ptrData, ptrData+size,  frame.begin()); //100~2500 mks
+}
 bool Frame::CopyToVector(std::vector<uint8_t> &vecBuf)
 {
 	vecBuf.resize(Size());

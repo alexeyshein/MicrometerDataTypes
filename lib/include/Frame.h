@@ -39,6 +39,8 @@ public:
     bool CopyToVector(std::vector<uint8_t> &vecBuf, uint32_t &width,  uint32_t& height);
     void Set(uint64_t id, uint64_t timestamp,  uint32_t width,  uint32_t height, 
     PixelFormatType pixelFormat, uint32_t size, uint8_t* ptrData);
+    void Set(uint64_t id, uint64_t timestamp,  uint32_t width,  uint32_t height,
+             PixelFormatType pixelFormat, uint32_t size, uint32_t offsetX,  uint32_t offsetY,  uint8_t* ptrData);
     uint8_t* Pointer(){return frame.data();}
     std::vector<uint8_t>& BufRef(){return frame;}
     const std::vector<uint8_t>& BufConstRef() const {return frame;}
@@ -46,6 +48,8 @@ public:
     uint32_t Width() const {return width;}
     uint32_t Height() const {return height;}
     uint32_t PixelFormat() const {return static_cast<uint32_t>(pixelFormat);}
+    uint32_t OffsetX() const {return offsetX; }
+    uint32_t OffsetY() const {return offsetY; }
     uint64_t Id()  const override{return id;}   
     uint64_t Timestamp() const {return  timestamp;};//timestamp in ns
 protected:
@@ -56,6 +60,8 @@ private:
     uint64_t timestamp; //timestamp in ns
     uint32_t width;
     uint32_t height;
+    uint32_t offsetX;
+    uint32_t offsetY;
     PixelFormatType pixelFormat;
 	std::vector<uint8_t> frame;
 
