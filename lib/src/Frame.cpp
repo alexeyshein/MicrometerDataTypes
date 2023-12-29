@@ -14,6 +14,8 @@ Frame::	Frame( uint64_t id_, uint64_t timestamp_,  uint32_t width_,  uint32_t he
     , height(height_)
     , pixelFormat(pixelFormat_)
     , frame(size,0)
+    , offsetX (0)
+    , offsetY (0)
 {}
 
 Frame::Frame(    uint64_t id_, uint64_t timestamp_,  uint32_t width_,  uint32_t height_, 
@@ -38,6 +40,8 @@ void Frame::Set(uint64_t id_, uint64_t timestamp_,  uint32_t width_,  uint32_t h
    pixelFormat=pixelFormat_;
    frame.resize(size);
    std::copy(ptrData, ptrData+size,  frame.begin()); //100~2500 mks
+   offsetX = 0;
+   offsetY = 0;
 }
 
 void Frame::Set(uint64_t id_, uint64_t timestamp_,  uint32_t width_,  uint32_t height_,
