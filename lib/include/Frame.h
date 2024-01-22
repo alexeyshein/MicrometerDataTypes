@@ -30,9 +30,9 @@ class Frame: public IData
 {
 public:
 	Frame(    uint64_t id=0, uint64_t timestamp=0,  uint32_t width=1920,  uint32_t height = 1080, 
-    PixelFormatType pixelFormat = PixelFormatType::Mono8, uint32_t size = 1920*1080);
+    PixelFormatType pixelFormat = PixelFormatType::Mono8, uint32_t offsetX = 0, uint32_t offsetY = 0, uint32_t size = 1920*1080);
     Frame(    uint64_t id, uint64_t timestamp,  uint32_t width,  uint32_t height, 
-    PixelFormatType pixelFormat, uint32_t size, uint8_t* ptrData);
+    PixelFormatType pixelFormat, uint32_t size,  uint32_t offsetX, uint32_t offsetY,  uint8_t* ptrData);
 	~Frame();
     // timeout - The time to wait until the frame got filled
     bool CopyToVector(std::vector<uint8_t> &vecBuf);

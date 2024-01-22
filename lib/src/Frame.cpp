@@ -6,7 +6,7 @@ using namespace::rf;
 
 
 Frame::	Frame( uint64_t id_, uint64_t timestamp_,  uint32_t width_,  uint32_t height_, 
-    PixelFormatType pixelFormat_, uint32_t size):
+    PixelFormatType pixelFormat_,  uint32_t offsetX, uint32_t offsetY, uint32_t size):
     IData()
     , id(id_)
     , timestamp(timestamp_)
@@ -14,13 +14,13 @@ Frame::	Frame( uint64_t id_, uint64_t timestamp_,  uint32_t width_,  uint32_t he
     , height(height_)
     , pixelFormat(pixelFormat_)
     , frame(size,0)
-    , offsetX (0)
-    , offsetY (0)
+    , offsetX (offsetX)
+    , offsetY (offsetY)
 {}
 
 Frame::Frame(    uint64_t id_, uint64_t timestamp_,  uint32_t width_,  uint32_t height_, 
-        PixelFormatType pixelFormat_, uint32_t size, uint8_t* ptrData):
-      Frame(id_, timestamp_,  width_,  height_, pixelFormat_, size)
+        PixelFormatType pixelFormat_, uint32_t offsetX_, uint32_t offsetY_,  uint32_t size, uint8_t* ptrData):
+      Frame(id_, timestamp_,  width_,  height_, pixelFormat_, offsetX_, offsetY_, size)
 {
       std::copy(ptrData, ptrData+size,  frame.begin());
 }
