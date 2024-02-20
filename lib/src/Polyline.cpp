@@ -29,7 +29,7 @@ void PolyLine::Set(uint64_t id_,  const std::vector<Point2d<double>>&& polyline_
 {
   id = id_;
   polyline.clear();
-  polyline = polyline;
+  polyline = polyline_;
   //TODO посмотреть по Emplace
   //profileQue.emplace(profileQue.end(), std::move(profile));
 }
