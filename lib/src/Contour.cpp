@@ -16,9 +16,9 @@ Contour::Contour( uint64_t id_, const std::deque<Point2d<double>>& points_, Cont
 , contourType(type)
 {}
 
-Contour::Contour( uint64_t id_, const std::deque<Point2d<double>>&& points_, ContourType type):
+Contour::Contour( uint64_t id_, std::deque<Point2d<double>>&& points_, ContourType type):
   id(id_)
-, points(points_)
+, points(std::move(points_))
 , contourType(type)
 {}
 
@@ -36,10 +36,10 @@ void Contour::Set(uint64_t id_,  const std::deque<Point2d<double>>& points_, Con
   contourType = type;
 }
 
-void Contour::Set(uint64_t id_,   const std::deque<Point2d<double>>&& points_, ContourType type)
+void Contour::Set(uint64_t id_,    std::deque<Point2d<double>>&& points_, ContourType type)
 {
   id = id_;
-  points = points_;
+  points = std::move(points_);
   contourType = type;
   //TODO посмотреть по Emplace
   //profileQue.emplace(profileQue.end(), std::move(profile));
