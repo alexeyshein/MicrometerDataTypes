@@ -1,9 +1,6 @@
 ﻿#pragma once
 
 #include <vector>
-#include <deque>
-#include <string>
-#include <memory>
 
 #include "IData.h"
 #include "Point2d.h"
@@ -24,6 +21,7 @@ public:
     uint64_t Id() const override {return id;}   
     const std::vector<Point2d<double>>& PolyLineConstRef()  const  {return polyline;}
     std::vector<Point2d<double>>& PolyLineRef()   {return polyline;}
+    size_t Size() const { return polyline.size(); }
 protected:
 
 private:
