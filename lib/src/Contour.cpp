@@ -48,6 +48,5 @@ void Contour::Set(uint64_t id_,    std::deque<Point2d<double>>&& points_, Contou
 void Contour::SetPoints(const std::vector<Point2d<double>>& pointsVec)
 {
   points.clear();
-  points.insert(points.end(), std::make_move_iterator( pointsVec.begin() ),
-    std::make_move_iterator( pointsVec.end() ));
-  }
+  points.insert(points.end(), pointsVec.begin(),pointsVec.end());
+ }
