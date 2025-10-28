@@ -4,7 +4,6 @@
 
 using namespace::rf;
 
-
 Frame::	Frame( uint64_t id_, uint64_t timestamp_,  uint32_t width_,  uint32_t height_, 
     PixelFormatType pixelFormat_,  uint32_t offsetX, uint32_t offsetY, uint32_t size):
     IData()
