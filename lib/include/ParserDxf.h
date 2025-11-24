@@ -10,7 +10,7 @@ class ParserDxf : public IProfileParser
 {
 public:
     ParserDxf();
-    virtual ~ParserDxf();
+    ~ParserDxf() override;
     bool Save(const Profile& profile, const std::string &path) override;
     bool Read(Profile& profile, const std::string &path) override;
     bool IsFileTypeCorrect(const std::string& path) override;

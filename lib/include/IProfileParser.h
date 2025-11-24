@@ -15,6 +15,7 @@ class IProfileParser
 {
 public:
     IProfileParser(){};
+    virtual ~IProfileParser() = default;
     virtual bool Save(const Profile& profile, const std::string& path) = 0;
     virtual bool Read(Profile& profile, const std::string& path) = 0 ;
     virtual bool IsFileTypeCorrect(const std::string& path) = 0;

@@ -12,7 +12,7 @@ class ParserAuto : public IProfileParser
 {
 public:
     ParserAuto();
-    virtual ~ParserAuto();
+    ~ParserAuto() override;
     bool Save(const Profile& profile, const std::string &path) override;
     bool Read(Profile& profile, const std::string &path) override;
     bool IsFileTypeCorrect(const std::string& path) override;
