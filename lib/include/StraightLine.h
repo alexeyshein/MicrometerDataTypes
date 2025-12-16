@@ -26,7 +26,8 @@ namespace rf
 		double yByX(double x) const;
 		// Calculates x by given y coordinate of point
 		double xByY(double y) const;
-
+		void normalize();
+		
 	private:
 		double a;
 		double b;
