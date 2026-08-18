@@ -16,7 +16,7 @@ namespace rf
 
 		void Set(const Point2d<double> &point1, const Point2d<double> &point2);
 		void Set(const Point2d<double> &point1, double width, double height);
-		void SetWidth(double width_) { width_ = width_; }
+		void SetWidth(double width_) { width = width_; }
 		void SetHeight(double height_) { height = height_; }
 
 		Point2d<double> PointTl() const { return pointTl; };
